@@ -1,0 +1,23 @@
+// Sizes
+$mobile-size-land: 576px;
+$tablet-size-port: 768px;
+$tablet-size-land: 1024px;
+$desktop-size-small: 1200px;
+$desktop-size-average: 1400px;
+$desktop-size-large: 1920px;
+$max-page-width: 2100px;
+
+// Colors
+$color-black: rgb(31 36 49);
+$color-blue: rgb(1 40 223);
+$color-grey: rgb(75 80 94);
+$color-white: rgb(255 255 255);
+$color-footer: rgb(23 28 45);
+
+// Shadows
+$shadow-sm: 0 2px 4px rgb(0 0 0 / 10%);
+$shadow-md: 0 4px 6px rgb(0 0 0 / 10%);
+$shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
+$shadow-sm-hover: 0 4px 6px rgb(0 0 0 / 15%);
+$shadow-md-hover: 0 6px 8px rgb(0 0 0 / 15%);
+$shadow-lg-hover: 0 15px 20px rgb(0 0 0 / 15%);

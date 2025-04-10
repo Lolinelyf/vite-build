@@ -1,0 +1,166 @@
+@use './variables' as *;
+
+.user-content {
+  // Ensure text remains readable
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  // Links styling
+  a {
+    transition: color 0.3s;
+    color: $color-blue;
+    text-decoration: none;
+    cursor: pointer;
+    word-break: break-word;
+
+    h1,
+    h2,
+    h3 {
+      color: inherit;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-blue;
+      text-decoration: underline;
+    }
+
+    &.button,
+    &.card-notice {
+      color: #fff;
+    }
+  }
+
+  // Lists
+  ul,
+  ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  // Basic text elements
+  p {
+    margin: 0 0 1rem;
+    max-width: 80ch; // Optimal reading length
+  }
+
+  // Headings hierarchy
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 2rem 0 1rem;
+    max-width: 100%;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  h3 {
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
+  }
+
+  h4 {
+    font-size: clamp(1.1rem, 1.25vw, 1.5rem);
+  }
+
+  // Media elements
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem 0;
+    border-radius: 4px;
+  }
+
+  // Horizontal rule
+  hr {
+    margin: 2rem 0;
+    border: 0;
+    border-top: 2px solid rgb(0 0 0 / 10%);
+  }
+
+  // Tables
+  table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+    font-size: 0.9em;
+
+    th {
+      background: #f5f5f5;
+      font-weight: 600;
+      text-align: left;
+      padding: 0.75rem;
+      border: 1px solid #e0e0e0;
+    }
+
+    td {
+      padding: 0.75rem;
+      border: 1px solid #e0e0e0;
+      vertical-align: top;
+    }
+
+    // Prevent extremely wide tables
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  // Blockquotes
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid $color-blue;
+    background: rgb(0 0 0 / 3%);
+    font-style: italic;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Code blocks
+  pre,
+  code {
+    background: #f5f5f5;
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    font-family: monospace;
+    font-size: 0.9em;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  pre {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  // Prevent overflow of all elements
+  * {
+    max-width: 100%;
+  }
+}

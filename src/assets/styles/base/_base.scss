@@ -1,0 +1,142 @@
+@use './variables' as *;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box; // Changed from inherit to border-box for more predictable sizing
+}
+
+*::selection {
+  color: #fff;
+  user-select: none; // Added to test autoprefixer
+}
+
+:target::before {
+  // Changed :before to ::before for consistency
+  content: '';
+  display: block;
+  height: 70px;
+  margin: -70px 0 0;
+
+  @media (min-width: $tablet-size-land) {
+    height: 90px;
+    margin: -90px 0 0;
+  }
+}
+
+ul[class],
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+  margin: 0; // Grouped reset styles together
+  padding: 0;
+}
+
+ul[class] {
+  list-style: none;
+}
+
+legend,
+td,
+th {
+  padding: 0.5rem;
+}
+
+html {
+  height: 100%;
+  background-color: #dfe6f1;
+  font-family: Montserrat, sans-serif;
+  scroll-behavior: smooth;
+  box-sizing: border-box; // Added to establish box-sizing inheritance
+}
+
+a {
+  transition: color 0.3s;
+  color: $color-blue;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $color-blue;
+    text-decoration: underline;
+  }
+}
+
+// Combined file type selectors for better maintainability
+a[href$=".pdf" i]::before, // Added case-insensitive modifier
+a[href$=".doc" i]::before,
+a[href$=".docx" i]::before,
+a[href$=".zip" i]::before {
+  width: 19px;
+  height: 19px;
+  content: '';
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 5px;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  padding: 11px;
+  background-position: center;
+}
+
+a[href$='.pdf' i]::before {
+  background-image: url('/images/icons/file-pdf.svg');
+}
+
+a[href$='.doc' i]::before,
+a[href$='.docx' i]::before {
+  background-image: url('/images/icons/file-word.svg');
+}
+
+a[href$='.zip' i]::before {
+  background-image: url('/images/icons/file-zip.svg');
+}
+
+.visually-hidden:not(:focus, :active),
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.icon {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  stroke-width: 0;
+  stroke: currentcolor; // Fixed capitalization
+  fill: currentcolor;
+  margin-right: 0.3rem;
+  margin-top: 2px;
+  transform: translateY(1px);
+
+  &_no-margin {
+    margin-right: 0;
+  }
+}
+
+.icon24 {
+  fill: currentcolor;
+  margin-right: 8px;
+}
+
+iframe {
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0; // Added to remove default iframe border
+}
