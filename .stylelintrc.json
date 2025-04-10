@@ -5,6 +5,7 @@
     "stylelint-prettier/recommended"
   ],
   "plugins": ["stylelint-prettier"],
+  "ignoreFiles": ["build/**/*"],
   "rules": {
     "prettier/prettier": true,
     "selector-class-pattern": null,

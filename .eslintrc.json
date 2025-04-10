@@ -10,5 +10,6 @@
   },
   "rules": {
     "prettier/prettier": "error"
-  }
+  },
+  "ignorePatterns": ["build/**/*"]
 }
