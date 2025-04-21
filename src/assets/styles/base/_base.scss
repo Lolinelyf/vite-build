@@ -1,88 +1,34 @@
 @use './variables' as *;
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box; // Changed from inherit to border-box for more predictable sizing
-}
-
-*::selection {
-  color: #fff;
-  user-select: none; // Added to test autoprefixer
-}
-
-:target::before {
-  // Changed :before to ::before for consistency
-  content: '';
-  display: block;
-  height: 70px;
-  margin: -70px 0 0;
-
-  @media (min-width: $tablet-size-land) {
-    height: 90px;
-    margin: -90px 0 0;
-  }
-}
-
-ul[class],
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  margin: 0; // Grouped reset styles together
-  padding: 0;
-}
-
-ul[class] {
-  list-style: none;
-}
-
-legend,
-td,
-th {
-  padding: 0.5rem;
-}
-
-html {
-  height: 100%;
-  background-color: #dfe6f1;
-  font-family: Montserrat, sans-serif;
-  scroll-behavior: smooth;
-  box-sizing: border-box; // Added to establish box-sizing inheritance
-}
-
-a {
-  transition: color 0.3s;
+a:not([class]),
+a:link:not([class]) {
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: transparent;
   color: $color-blue;
-  text-decoration: none;
+  transition: 0.15s;
   cursor: pointer;
-  font-weight: 500;
 
   &:hover,
   &:active,
   &:focus {
-    color: $color-blue;
     text-decoration: underline;
+    text-decoration-color: initial;
+    color: $color-blue-md;
   }
 }
 
-// Combined file type selectors for better maintainability
-a[href$=".pdf" i]::before, // Added case-insensitive modifier
-a[href$=".doc" i]::before,
-a[href$=".docx" i]::before,
-a[href$=".zip" i]::before {
+a:is([href$='.pdf' i], [href$='.doc' i], [href$='.docx' i], [href$='.zip' i])::before {
+  display: inline-block;
   width: 19px;
   height: 19px;
+  margin-right: 5px;
+  padding: 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 3px;
   content: '';
   vertical-align: middle;
-  display: inline-block;
-  margin-right: 5px;
-  background-repeat: no-repeat;
-  border-radius: 3px;
-  padding: 11px;
-  background-position: center;
 }
 
 a[href$='.pdf' i]::before {
@@ -106,10 +52,10 @@ input[type='radio'].visually-hidden {
   height: 1px;
   margin: -1px;
   padding: 0;
-  border: 0;
   white-space: nowrap;
-  clip-path: inset(100%);
+  border: 0;
   clip: rect(0 0 0 0);
+  clip-path: inset(100%);
   overflow: hidden;
 }
 
@@ -117,12 +63,10 @@ input[type='radio'].visually-hidden {
   display: inline-block;
   width: 0.8rem;
   height: 0.8rem;
-  stroke-width: 0;
-  stroke: currentcolor; // Fixed capitalization
   fill: currentcolor;
-  margin-right: 0.3rem;
-  margin-top: 2px;
-  transform: translateY(1px);
+  stroke: currentcolor;
+  stroke-width: 0;
+  vertical-align: middle;
 
   &_no-margin {
     margin-right: 0;
@@ -132,11 +76,40 @@ input[type='radio'].visually-hidden {
 .icon24 {
   fill: currentcolor;
   margin-right: 8px;
+
+  &_margin_none {
+    margin: 0;
+  }
 }
 
-iframe {
-  max-width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: 0; // Added to remove default iframe border
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: $color-blue;
+
+  @media (min-width: $mobile-size-land) {
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
+
+  @media (min-width: $tablet-size-land) {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: 2px;
+  }
+
+  &--white {
+    color: $color-white;
+  }
 }

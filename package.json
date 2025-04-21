@@ -4,38 +4,40 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "vite:iife": "npx vite build --config vite.iife.config.js",
     "dev": "vite",
-    "build": "npm run lint && vite build",
+    "prebuild-clean": "node scripts/prebuild-clean-build.cjs",
+    "build": "npm run prebuild-clean && npm run lint && vite build && npm run vite:iife && npm run minify-separate",
     "preview": "vite preview",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint . --ext .js",
-    "lint:css": "stylelint \"**/*.scss\"",
-    "format": "prettier --write \"**/*.{js,scss}\"",
-    "prepare": "husky install"
+    "postbuild": "node scripts/postbuild-fix-scripts.cjs",
+    "lint": "npm run lint:css",
+    "lint:css": "stylelint \"src/**/*.scss\"",
+    "lint:fix": "npm run lint:css -- --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,scss}\"",
+    "prepare": "husky install",
+    "minify-separate": "node scripts/minify-separate.cjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "handlebars": "^4.7.8",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "postcss": "^8.5.3",
-    "prettier": "^2.8.8",
-    "stylelint": "^14.16.1",
-    "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-standard-scss": "^6.1.0",
-    "stylelint-prettier": "^2.0.0",
+    "prettier": "^3.2.5",
+    "rimraf": "^6.0.1",
+    "stylelint": "^16.3.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-order": "^6.0.4",
     "vite": "^6.2.0",
     "vite-plugin-handlebars": "^2.0.0"
   },
   "dependencies": {
-    "sass": "^1.86.3"
+    "sass": "^1.86.3",
+    "terser": "^5.39.0"
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
       "prettier --write"
     ],
     "*.scss": [
