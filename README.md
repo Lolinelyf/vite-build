@@ -1,4 +1,4 @@
-# Vite Build Technopark
+# Vite Build
 
 Этот проект — современный шаблон для быстрой и удобной сборки сайтов на базе [Vite](https://vitejs.dev/).
 
