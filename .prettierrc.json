@@ -7,5 +7,16 @@
   "bracketSpacing": true,
   "arrowParens": "avoid",
   "endOfLine": "crlf",
-  "quoteProps": "consistent"
+  "quoteProps": "consistent",
+  "overrides": [
+    {
+      "files": "*.hbs",
+      "options": {
+        "parser": "html",
+        "options": {
+          "singleQuote": false
+        }
+      }
+    }
+  ]
 }
